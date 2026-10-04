@@ -18,7 +18,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "gen:pkg": "bun -e \"const pkg = require('./package.json'); delete pkg.scripts; delete pkg.devDependencies; pkg.main = './index.js'; pkg.module = './index.js'; pkg.types = './index.d.ts'; pkg.exports = { '.': { 'import': './index.js', 'types': './index.d.ts' } }; Bun.write('./dist/package.json', JSON.stringify(pkg, null, 2));\"",
     "build": "bun run clean && bun run build:js && bun run build:types && bun run gen:pkg",
-    "release": "bun run build && git add . && git commit -m \"chore: release build\" && git push origin main && git subtree split --prefix dist -b release-temp && git push origin release-temp:release --force && git branch -D release-temp"
+    "release": "git checkout -b release-temp && bun run build && git add -f dist && git commit -m \"chore: release build\" && git subtree split --prefix dist -b release-dist && git push origin release-dist:release --force && git checkout main && git branch -D release-temp release-dist"
   },
   "devDependencies": {
     "@types/bun": "latest",
