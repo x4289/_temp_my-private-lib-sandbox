@@ -21,9 +21,7 @@
     "release": "bun run build && git add . && git commit -m \"chore: release build\" && git push origin main && git subtree split --prefix dist -b release-temp && git push origin release-temp:release --force && git branch -D release-temp"
   },
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^7"
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
   }
 }
