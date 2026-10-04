@@ -1,0 +1,18 @@
+{
+  "name": "my-private-lib-sandbox",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  }
+}
